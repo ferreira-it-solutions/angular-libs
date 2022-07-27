@@ -16,7 +16,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class AlertService {
+export class NgMatAlertService {
   constructor(private snackBar: MatSnackBar, public matDialog: MatDialog) {}
 
   getAlerts = () => {
