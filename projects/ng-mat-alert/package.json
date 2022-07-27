@@ -1,0 +1,22 @@
+{
+  "name": "@fis-lib/ng-mat-alert",
+  "version": "0.0.1",
+  "description": "An Angular Lib for alerts using Material Design from material.angular.io",
+  "author": {
+    "name": "Rubens Ferreira",
+    "email": "rubens.ferreira@ferreiraitsolutions.dev"
+  },
+  "peerDependencies": {
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/material": "^14.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "exports": {
+    ".": {
+      "sass": "./src/global-syles/_index.scss"
+    }
+  }
+}

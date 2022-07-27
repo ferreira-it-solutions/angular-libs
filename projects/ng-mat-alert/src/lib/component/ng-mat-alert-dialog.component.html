@@ -1,0 +1,45 @@
+<div class="mb-15 fx-row fx-start-center fx-gap-12 alert-dialog">
+  <mat-icon
+    class="icon-dialog"
+    *ngIf="data.type !== 'default'"
+    [color]="data.type"
+    >{{ getIcon() }}</mat-icon
+  >
+  <h1 class="m-0" mat-dialog-title *ngIf="data.title">{{ data.title }}</h1>
+</div>
+<div mat-dialog-content class="mb-15 fx-row fx-start-center">
+  <div>
+    <div
+      class="mb-15"
+      [innerHTML]="data.innerHTML"
+      *ngIf="data.innerHTML"
+    ></div>
+    <ng-container *ngIf="data.message">
+      <div class="fx-col">
+        <span *ngFor="let p of splitMessage">{{ p }}</span>
+      </div>
+    </ng-container>
+
+    <p *ngIf="data.message"></p>
+    <mat-form-field class="w100" *ngIf="data.hasModel">
+      <input matInput [(ngModel)]="model" name="model" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="w100 py-12" mat-dialog-actions [class.invert]="data.invert">
+  <button
+    (click)="onClick(false)"
+    *ngIf="data.noClick"
+    class="alert-button"
+    [ngClass]="getClassButton(true)"
+  >
+    {{ data.noText ? data.noText : "Cancelar" }}
+  </button>
+  <button
+    (click)="onClick(true)"
+    class="alert-button"
+    [ngClass]="getClassButton()"
+  >
+    {{ data.okText ? data.okText : "Ok" }}
+  </button>
+</div>

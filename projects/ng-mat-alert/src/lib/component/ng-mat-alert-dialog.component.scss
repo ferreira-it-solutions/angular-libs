@@ -1,0 +1,16 @@
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+
+    .invert {
+        flex-direction: row-reverse !important;
+        gap: 12px !important;
+    }
+}
+
+/* .alert-button.mat-stroked-button.primary {
+    color: var(--alert-error) !important;
+    border-color: (--alert-error) !important;
+} */
