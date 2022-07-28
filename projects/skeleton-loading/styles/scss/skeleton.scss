@@ -1,0 +1,126 @@
+@use "../../../../node_modules/scss-layout/scss/core" as scss-layout;
+
+$huesBasic: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+$hues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
+
+.animation {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(180, 29%, 55%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+@mixin map-skeleton-bg($palette, $key, $onlyBasic: false, $blackWhite: false) {
+  &.animation-mat-color {
+    &-#{$key} {
+      @if ($blackWhite) {
+        animation: #{skeleton-loading +
+          "-" +
+          $key +
+          "-700"}
+          1s
+          linear
+          infinite
+          alternate !important;
+        @keyframes #{skeleton-loading + '-' + $key + '-700'} {
+          0% {
+            background-color: #{map-get($map: $palette, $key: 700)};
+            opacity: 0.3;
+          }
+
+          100% {
+            background-color: hsl(200, 20%, 95%);
+            opacity: 1;
+          }
+        }
+      } @else {
+        animation: #{skeleton-loading +
+          "-" +
+          $key +
+          "-500"}
+          1s
+          linear
+          infinite
+          alternate !important;
+        @keyframes #{skeleton-loading + '-' + $key + '-500'} {
+          0% {
+            background-color: #{map-get($map: $palette, $key: 500)};
+            opacity: 0.3;
+          }
+
+          100% {
+            background-color: hsl(200, 20%, 95%);
+            opacity: 1;
+          }
+        }
+      }
+
+      @if ($blackWhite) {
+        &-700 {
+          animation: #{skeleton-loading +
+            "-" +
+            $key +
+            "-700"}
+            1s
+            linear
+            infinite
+            alternate !important;
+          @keyframes #{skeleton-loading + '-' + $key + '-700'} {
+            0% {
+              background-color: #{map-get($map: $palette, $key: 700)};
+              opacity: 0.3;
+            }
+
+            100% {
+              background-color: hsl(200, 20%, 95%);
+              opacity: 1;
+            }
+          }
+        }
+      } @else {
+        @each $var in if($onlyBasic, $huesBasic, $hues) {
+          &-#{$var} {
+            animation: #{skeleton-loading +
+              "-" +
+              $key +
+              "-" +
+              $var}
+              1s
+              linear
+              infinite
+              alternate !important;
+            @keyframes #{skeleton-loading + '-' + $key + '-' + $var} {
+              0% {
+                background-color: #{map-get($map: $palette, $key: $var)};
+                opacity: 0.3;
+              }
+
+              100% {
+                background-color: hsl(200, 20%, 95%);
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.animation {
+  //animation: skeleton-loading 1s linear infinite alternate !important;
+  @each $key, $palette in scss-layout.$matPalettesBasic {
+    @include map-skeleton-bg($palette, $key, true);
+  }
+
+  @each $key, $palette in scss-layout.$matPalettes {
+    @include map-skeleton-bg($palette, $key, false);
+  }
+}

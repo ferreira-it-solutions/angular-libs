@@ -1,0 +1,14 @@
+<ng-content *ngIf="showContent"></ng-content>
+
+<span [ngSwitch]="repeatElements === 1">
+    <div class="skeleton" *ngSwitchCase="true" [ngClass]="classesList" [class.animation]="!showContent">
+    </div>
+    <div *ngSwitchDefault [ngClass]="parentClassesList">
+        <div
+            class="skeleton"
+            *ngFor="let item of arrayFromRepeat"
+            [ngClass]="classesList"
+            [class.animation]="!showContent"
+        ></div>
+    </div>
+</span>

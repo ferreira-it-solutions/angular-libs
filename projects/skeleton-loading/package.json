@@ -1,9 +1,10 @@
 {
-  "name": "@fis-lib/ng-mat-alert",
+  "name": "@fis-lib/skeleton-loading",
   "version": "0.0.6",
-  "description": "An Angular Lib for alerts using Material Design from material.angular.io",
+  "description": "An Angular Lib for fis-components",
   "scripts": {
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public",
+    "build-sass": "sass styles/scss/skeleton.scss styles/css/skeleton.css"
   },
   "author": {
     "name": "Rubens Ferreira",
@@ -12,7 +13,6 @@
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
-    "@angular/material": "^14.1.0",
     "scss-layout": "^0.2.1"
   },
   "dependencies": {

@@ -12,11 +12,17 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "@fis/ng-mat-alert": [
-        "dist/fis/ng-mat-alert"
+      "@fis-lib/ng-mat-alert": [
+        "dist/fis-lib/ng-mat-alert"
       ],
       "ng-mat-alert": [
         "dist/ng-mat-alert"
+      ],
+      "@fis-lib/skeleton-loading": [
+        "dist/fis-lib/skeleton-loading"
+      ],
+      "skeleton-loading": [
+        "dist/skeleton-loading"
       ]
     },
     "declaration": false,
